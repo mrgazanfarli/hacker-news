@@ -20,8 +20,6 @@ export function generateSuccessActionTypeName (actionTypeName: string | symbol):
     return actionTypeName.toString() + "_SUCCESS";
 }
 
-// type = CHANGE_PASSWORD
-
 // TODO: replace any with IError
 export function generateAsyncItemReducer<T> (actionType: string): Reducer<IAsyncData<T>, ICustomAction<T | any>> {
     return (state: IAsyncData<T> = getInitialAsyncData<T>(), action: ICustomAction<T | any>): IAsyncData<T> => {

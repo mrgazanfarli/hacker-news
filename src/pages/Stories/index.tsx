@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { EStoryType } from 'models/enums';
 import { hasEnumValue } from 'utils';
 import { Card, CardBody, CardFooter, Col, Input, Label, Row } from 'reactstrap';
-import { isPending, isSuccess } from 'utils/redux';
+import { isError, isPending, isSuccess } from 'utils/redux';
 import LoadingSpinner from 'components/Loading';
 import range from 'lodash/range';
 import { useDispatch, useSelector } from 'react-redux';
@@ -113,6 +113,12 @@ const StoriesPage: React.FC = () => {
                         ))}
                     </Row>
                 </>
+            )}
+
+            {(isError(storiesBranch) || isError(storyIdsBranch)) && (
+                <Row className="py-4">
+                    <h3 className="text-danger">Sorry, there is something wrong. Tyr again a bit later :(</h3>
+                </Row>
             )}
         </AppLayout>
     )

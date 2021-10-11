@@ -42,7 +42,3 @@ export interface IError {
     message?: string;
     request?: any;
 }
-
-export interface ISimpleId {
-    id: string | number;
-}
