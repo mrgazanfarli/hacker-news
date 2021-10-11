@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Proxim Nova', serif !important;
+
+    &::after {
+        box-sizing: border-box;
+        font-family: 'Proxim Nova', serif !important;
+    }
+
+    &::before {
+        box-sizing: border-box;
+        font-family: 'Proxim Nova', serif !important;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.br-50 {
+    border-radius: 50% !important;
+}

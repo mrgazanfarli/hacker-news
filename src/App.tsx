@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-function App() {
+import { routes } from 'routes';
+
+import LoadingSpinner from 'components/Loading';
+import AppRoute from 'routes/AppRoute';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Router>
+        <React.Suspense
+            fallback={(
+                <div className="pt-3">
+                  <LoadingSpinner />
+                </div>
+            )}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Switch>
+            {routes.map((route, idx) => (
+                <AppRoute
+                    path={route.path}
+                    component={route.component}
+                    key={idx}
+                />
+            ))}
+
+            <Redirect from="*" to="/stories/new" />
+          </Switch>
+        </React.Suspense>
+      </Router>
   );
-}
+};
+
+App.displayName = 'App';
 
 export default App;
